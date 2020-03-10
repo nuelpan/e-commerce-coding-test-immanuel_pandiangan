@@ -5,22 +5,21 @@ import { fetchAllProducts } from "../store/actions/characterAction";
 import constant from "expo-constants";
 import ProductCard from "../components/ProductCard";
 
-export default function Home() {
+export default function Home(props) {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.allProducts);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-  }, [products]);
+  }, []);
 
   return (
     <SafeAreaView style={styles.safeView}>
       <View>
         <FlatList
           data={products}
-          renderItem={({ item }) => (
-            <ProductCard product={item} key={String(item.id)} />
-          )}
+          renderItem={({ item }) => <ProductCard {...props} product={item} />}
+          keyExtractor={item => String(item.id)}
         />
       </View>
     </SafeAreaView>

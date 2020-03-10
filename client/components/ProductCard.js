@@ -5,7 +5,13 @@ import NumberFormat from "react-number-format";
 
 export default function ProductCard(props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        props.navigation.navigate("Detail", {
+          productId: props.product.id
+        });
+      }}
+    >
       <Container style={{ height: "auto" }}>
         <Content>
           <Card>
@@ -14,7 +20,16 @@ export default function ProductCard(props) {
                 <Text>{props.product.name}</Text>
               </Body>
             </CardItem>
-            <CardItem footer bordered>
+            <CardItem
+              footer
+              bordered
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <Text>Qty:{props.product.qty}</Text>
               <NumberFormat
                 value={props.product.price}
                 displayType={"text"}
