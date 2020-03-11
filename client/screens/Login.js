@@ -12,15 +12,30 @@ import {
   Button,
   Text
 } from "native-base";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/actions/userAction";
 
-export default function Login() {
+export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [eye, setEye] = useState("eye-slash");
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getToken();
+  });
+
+  async function getToken() {
+    try {
+      const value = await AsyncStorage.getItem("token");
+      if (value !== null) {
+        props.navigation.navigate("Profile");
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  }
 
   function handleEye() {
     if (eye === "eye-slash") {
@@ -32,12 +47,22 @@ export default function Login() {
     }
   }
 
-  function handleLogin() {
-    const payload = {
-      username,
-      password
-    };
-    dispatch(login(payload));
+  async function handleLogin() {
+    try {
+      const payload = {
+        username,
+        password
+      };
+      await dispatch(login(payload));
+      let token = await AsyncStorage.getItem("token");
+      if (token !== null) {
+        setUsername("");
+        setPassword("");
+        props.navigation.navigate("Profile");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -46,7 +71,7 @@ export default function Login() {
         <Form>
           <Item floatingLabel>
             <Label>Username</Label>
-            <Input onChangeText={text => setUsername(text)} />
+            <Input onChangeText={text => setUsername(text)} value={username} />
           </Item>
           <Item floatingLabel last>
             <Label>Password</Label>
@@ -54,6 +79,7 @@ export default function Login() {
               placeholder="Icon Alignment in Textbox"
               secureTextEntry={passwordVisibility}
               onChangeText={text => setPassword(text)}
+              value={password}
             />
             <Icon
               type="FontAwesome"

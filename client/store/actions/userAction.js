@@ -1,4 +1,4 @@
-import { SET_TOKEN, LOGIN } from "../actionTypes";
+import { SET_TOKEN, LOGIN, LOGOUT } from "../actionTypes";
 import axios from "axios";
 import { Alert, AsyncStorage } from "react-native";
 
@@ -21,10 +21,20 @@ export const login = payload => async (dispatch, getState) => {
     });
     dispatch({
       type: LOGIN,
-      user: result.data
+      user: result.data.user
     });
     await AsyncStorage.setItem("token", result.data.token);
   } catch (error) {
-    console.log(error);
+    Alert.alert(error.message);
+  }
+};
+
+export const logout = () => (dispatch, getState) => {
+  try {
+    dispatch({
+      type: LOGOUT
+    });
+  } catch (error) {
+    Alert.alert(error.message);
   }
 };

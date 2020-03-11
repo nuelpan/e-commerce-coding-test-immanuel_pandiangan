@@ -21,7 +21,7 @@ export default function StackNavigation() {
         dispatch(setToken(value));
       }
     } catch (error) {
-      Alert.alert(error);
+      Alert.alert(error.message);
     }
   }
 
@@ -31,14 +31,9 @@ export default function StackNavigation() {
 
   return (
     <Stack.Navigator>
-      {token ? (
-        <Stack.Screen name="Profile" component={Profile} />
-      ) : (
-        <>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register" component={Register} />
-        </>
-      )}
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>
   );
 }
