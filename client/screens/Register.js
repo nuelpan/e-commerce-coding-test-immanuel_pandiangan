@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, AsyncStorage, Alert } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet } from "react-native";
 import {
   Container,
   Header,
@@ -12,7 +12,7 @@ import {
   Button,
   Text
 } from "native-base";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "../store/actions/userAction";
 
 export default function Register(props) {

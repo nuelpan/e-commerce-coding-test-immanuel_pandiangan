@@ -27,7 +27,8 @@ export default function Home(props) {
 
 const styles = StyleSheet.create({
   safeView: {
-    flex: 1
+    flex: 1,
+    padding: 20
   },
   scrollView: {
     flex: 1

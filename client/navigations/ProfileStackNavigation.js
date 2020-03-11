@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AsyncStorage, Alert } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
 import { setToken } from "../store/actions/userAction";
 

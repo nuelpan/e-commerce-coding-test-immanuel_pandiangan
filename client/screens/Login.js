@@ -12,7 +12,7 @@ import {
   Button,
   Text
 } from "native-base";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../store/actions/userAction";
 
 export default function Login(props) {

@@ -1,12 +1,8 @@
-import { FETCH_ALL_PRODUCTS } from "../actionTypes";
+import { FETCH_ALL_PRODUCTS, BUY_PRODUCT } from "../actionTypes";
 import axios from "axios";
+import { Alert } from "react-native";
 
 export const fetchAllProducts = () => (dispatch, getState) => {
-  // export async function fetchAllProducts(dispatch, getState) {
-  // dispatch({
-  //   type: LOADER,
-  //   loader: true
-  // });
   axios({
     method: "POST",
     url: "http://35.236.151.184/products"
@@ -18,11 +14,22 @@ export const fetchAllProducts = () => (dispatch, getState) => {
       });
     })
     .catch(err => console.log(err));
-  //   .catch(err => {
-  //     console.log(err);
-  //     dispatch({
-  //       type: ERROR,
-  //       error: err
-  //     });
-  //   });
+};
+
+export const buyProduct = payload => (dispatch, getState) => {
+  axios({
+    method: "POST",
+    url: "http://35.236.151.184/transactions/create",
+    data: {
+      userId: payload.userId,
+      productId: payload.productId,
+      requiredQty: payload.requiredQty
+    },
+    headers: { token: payload.token }
+  })
+    .then(({ data }) => {
+      dispatch(fetchAllProducts());
+      Alert.alert("Purchasing Success");
+    })
+    .catch(err => console.log(err));
 };

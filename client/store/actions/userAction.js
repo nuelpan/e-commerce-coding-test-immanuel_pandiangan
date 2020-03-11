@@ -23,6 +23,7 @@ export const login = payload => async (dispatch, getState) => {
       type: LOGIN,
       user: result.data.user
     });
+    dispatch(setToken(result.data.token));
     await AsyncStorage.setItem("token", result.data.token);
   } catch (error) {
     Alert.alert(error.message);
@@ -41,6 +42,9 @@ export const register = payload => async (dispatch, getState) => {
         credits: payload.credits
       }
     });
+    if (result) {
+      Alert.alert("Account Created!");
+    }
   } catch (error) {
     Alert.alert(error.message);
   }

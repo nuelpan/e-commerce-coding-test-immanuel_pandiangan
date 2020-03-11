@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View, Alert, AsyncStorage } from "react-native";
+import { StyleSheet, Alert, AsyncStorage } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Container,
