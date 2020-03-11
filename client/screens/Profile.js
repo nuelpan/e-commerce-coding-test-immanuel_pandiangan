@@ -1,6 +1,10 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, Alert, AsyncStorage } from "react-native";
 
-export default function Profile() {
-  return <View></View>;
+export default function Profile(props) {
+  return (
+    <View>
+      <Text>This is profile</Text>
+    </View>
+  );
 }

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, View, SafeAreaView, FlatList } from "react-native";
-import { fetchAllProducts } from "../store/actions/characterAction";
-import constant from "expo-constants";
+import { fetchAllProducts } from "../store/actions/productAction";
 import ProductCard from "../components/ProductCard";
 
 export default function Home(props) {

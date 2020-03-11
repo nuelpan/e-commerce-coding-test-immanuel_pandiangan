@@ -7,19 +7,6 @@ export const fetchAllProducts = () => (dispatch, getState) => {
   //   type: LOADER,
   //   loader: true
   // });
-
-  // try {
-  //   const products = await axios({
-  //     method: "POST",
-  //     url: "/products"
-  //   });
-  //   dispatch({
-  //     type: FETCH_ALL_PRODUCTS,
-  //     products
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
   axios({
     method: "POST",
     url: "http://35.236.151.184/products"
@@ -31,14 +18,6 @@ export const fetchAllProducts = () => (dispatch, getState) => {
       });
     })
     .catch(err => console.log(err));
-  // fetch(`https://rickandmortyapi.com/api/character/`)
-  //   .then(res => res.json())
-  //   .then(characters => {
-  //     dispatch({
-  //       type: FETCH_ALL_CHARACTER,
-  //       characters
-  //     });
-  //   })
   //   .catch(err => {
   //     console.log(err);
   //     dispatch({
