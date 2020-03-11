@@ -80,8 +80,13 @@ export default function Profile(props) {
           </CardItem>
           <CardItem style={{}} footer bordered>
             <Button
+              bordered
               onPress={() => handleLogout()}
-              style={{ justifyContent: "center", marginLeft: "auto" }}
+              style={{
+                justifyContent: "center",
+                marginLeft: "auto",
+                borderRadius: 22
+              }}
             >
               <Text>Logout</Text>
             </Button>

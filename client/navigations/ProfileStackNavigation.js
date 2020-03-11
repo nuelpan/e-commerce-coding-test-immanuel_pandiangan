@@ -12,7 +12,6 @@ const Stack = createStackNavigator();
 
 export default function StackNavigation() {
   const dispatch = useDispatch();
-  const token = useSelector(state => state.users.token);
 
   async function getToken() {
     try {

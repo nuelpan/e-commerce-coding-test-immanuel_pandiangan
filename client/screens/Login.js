@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AsyncStorage, Alert } from "react-native";
+import { StyleSheet, AsyncStorage, Alert } from "react-native";
 import {
   Container,
   Header,
@@ -66,7 +66,7 @@ export default function Login(props) {
   }
 
   return (
-    <Container>
+    <Container style={style.container}>
       <Content>
         <Form>
           <Item floatingLabel>
@@ -92,15 +92,34 @@ export default function Login(props) {
           <Button
             style={{
               marginTop: 16,
-              justifyContent: "center"
+              justifyContent: "center",
+              borderRadius: 22
             }}
-            rounded
             onPress={() => handleLogin()}
           >
             <Text>Login</Text>
+          </Button>
+          <Button
+            onPress={() => props.navigation.navigate("Register")}
+            style={{
+              marginTop: 16,
+              justifyContent: "center",
+              borderRadius: 22
+            }}
+            bordered
+            primary
+          >
+            <Text>Register</Text>
           </Button>
         </Form>
       </Content>
     </Container>
   );
 }
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20
+  }
+});

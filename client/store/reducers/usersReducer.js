@@ -1,4 +1,4 @@
-import { SET_TOKEN, LOGIN, LOGOUT } from "../actionTypes";
+import { SET_TOKEN, LOGIN, LOGOUT, REGISTER } from "../actionTypes";
 
 const initialState = {
   token: null,
@@ -19,6 +19,7 @@ export default function productsReducer(state = initialState, action) {
       return Object.assign({}, state, {
         user: undefined
       });
+
     default:
       return state;
   }

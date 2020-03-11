@@ -29,6 +29,23 @@ export const login = payload => async (dispatch, getState) => {
   }
 };
 
+export const register = payload => async (dispatch, getState) => {
+  try {
+    const result = await axios({
+      method: "POST",
+      url: "http://35.236.151.184/users/create",
+      data: {
+        name: payload.name,
+        username: payload.username,
+        password: payload.password,
+        credits: payload.credits
+      }
+    });
+  } catch (error) {
+    Alert.alert(error.message);
+  }
+};
+
 export const logout = () => (dispatch, getState) => {
   try {
     dispatch({
